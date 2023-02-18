@@ -12,7 +12,10 @@ const createArticleItem = ( articleData ) => {
   const articleURL = articleData.querySelector('link').textContent;
   item.addEventListener('click', (event) => {
     const articlePreview = document.getElementById('articlePreview');
-    articlePreview.src = articleURL;
+    // Prevent reload the same article
+    if ( articleURL !== articlePreview.src) {
+      articlePreview.src = articleURL;
+    }
   })
   item.append(title, pubDate);
   return item;
